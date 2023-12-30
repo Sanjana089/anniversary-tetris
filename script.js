@@ -20,6 +20,7 @@ $(document).ready(function () {
             full.style.margin = '1px';
             full.style.backgroundColor = '#FF160C';
         });
+        piece1.style.opacity = '0';
         const blocks = document.querySelectorAll('.tetris-block');
         blocks.forEach(block => {
             block.style.backgroundColor = '#FF160C';
