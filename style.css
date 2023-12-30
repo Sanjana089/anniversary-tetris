@@ -77,24 +77,27 @@ h3 {
 }
 
 .piece {
-    grid-template-columns: repeat(9, 16px);
+    grid-template-columns: repeat(2, 16px);
     grid-template-rows: repeat(3, 16px);
     gap: 2px;
     position: absolute;
-    left: auto;
+    left: calc(50% + 46px);
     animation: completeHeart 5s linear forwards;
 }
 
 .tilted-piece {
-    grid-template-columns: repeat(11, 16px);
+    grid-template-columns: repeat(3, 16px);
     grid-template-rows: repeat(2, 16px);
     gap: 2px;
     position: absolute;
-    left: auto;
+    left: calc(50% + 46px);
     animation: incompleteHeart 4s linear infinite;
     cursor: pointer;
     /* Remove blue highlighting effect */
     -webkit-tap-highlight-color: transparent;
+}
+.tetris-block.red {
+    background-color: #FF160C;
 }
 
 .hidden {
