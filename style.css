@@ -77,6 +77,7 @@ h3 {
 }
 
 .piece {
+    display: grid;
     grid-template-columns: repeat(2, 16px);
     grid-template-rows: repeat(3, 16px);
     gap: 2px;
@@ -87,6 +88,7 @@ h3 {
 
 .tilted-piece {
     grid-template-columns: repeat(3, 16px);
+    display: grid;
     grid-template-rows: repeat(2, 16px);
     gap: 2px;
     position: absolute;
