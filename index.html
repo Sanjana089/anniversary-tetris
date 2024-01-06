@@ -2,157 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta author="Geezy Wish">
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <title>Happy Anniversary</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta author="Geezy Wish">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <title>Happy Anniversary</title>
 </head>
 
 <body>
-    <div class="container">
-        <h3>Sometimes, a little touch of yours can make everything right.</h3>
+  <div class="grid-container"> </div>
+  <p>Score: <span class="score"></span></p>
+  <div class="actions">
+    <button onclick="restart()">Restart</button>
+  </div>
+  <script src="script.js" type="text/javascript"></script>
 
-        <!-- Correct tetris piece -->
-        <div class="piece p1 hidden" id="animatedPiece1">
-
-            <div class="tetris-block red"></div>
-            <div class="tetris-block red"></div>
-
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block red"></div>
-
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block red"></div>
-        </div>
-
-        <!-- Tilted tetris piece -->
-        <div class="tilted-piece p2" id="animatedPiece2">
-            <div class="tetris-block red"></div>
-            <div class="tetris-block red"></div>
-            <div class="tetris-block red"></div>
-
-            <div class="tetris-block red"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-        </div>
-
-        <!-- Whole heart -->
-        <div class="tetris-heart">
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block full" id="full"></div>
-            <div class="tetris-block full" id="full"></div>
-            <div class="tetris-block empty"></div>
-
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block full" id="full"></div>
-            <div class="tetris-block"></div>
-
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block full" id="full"></div>
-            <div class="tetris-block"></div>
-
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block empty"></div>
-
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-            <div class="tetris-block empty"></div>
-        </div>
-        <h1>Happy Anniversary my love.</h1>
-    </div>
-    <script src="script.js" type="text/javascript"></script>
 </body>
 
 </html>

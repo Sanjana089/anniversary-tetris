@@ -1,126 +1,85 @@
 body {
-    background-color: #ee8c68;
-    background-image: linear-gradient(45deg, #EE8C68, #EB6B9D);
-    overflow: hidden;
-    width: 100%;
-    height: 100vh;
-    font-family: cursive;
-    margin: auto;
+  min-height: 100vh;
+  min-width: 100vh;
+  background-color: #12181f;
+  color: white;
 }
 
 h1 {
-    color: #8B0000;
-    position: absolute;
-    bottom: 10%;
-    width: 100%;
     text-align: center;
-    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 50px;
 }
 
-h3 {
-    color: #660000;
-    position: absolute;
-    top: 10%;
-    transform: translateY(-10%);
-    width: 100%;
+p {
     text-align: center;
-    font-size: 1.5em;
-    letter-spacing: 2px;
+    font-size: 30px;
+    font-weight: bold;
 }
 
-
-@keyframes completeHeart {
-    0% {
-        top: 30%;
-        display: grid;
-    }
-
-    99% {
-        top: calc(50% - 80px);
-        display: none;
-    }
-
-    100% {
-        display: none;
-    }
-}
-
-@keyframes incompleteHeart {
-    0% {
-        top: 30%;
-        display: grid;
-    }
-
-    99% {
-        top: calc(50% - 98px);
-        display: none;
-    }
-
-    100% {
-        display: none;
-    }
-}
-
-.container {
+.actions {
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+
+.actions button {
+    padding: 8px 16px;
+    font-size: 30px;
+    border-radius: 10px;
+    background-color: #27ae60;
+    color: white;
+}
+
+.grid-container {
+  display: grid;
+  justify-content: center;
+  grid-gap: 16px;
+  grid-template-columns: repeat(6, 140px);
+  grid-template-rows: repeat(2, calc(140px / 2 * 3));
+}
+
+.card {
+  height: calc(140px / 2 * 3);
+  width: 140px;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.5s ease-in-out;
+}
+
+.front-image {
+  width: 60px;
+  height: 60px;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    border-radius: 10px;
+    top: 0;
+    left: 0;
     height: 100%;
+    width: 100%;
 }
 
-.tetris-heart {
-    display: grid;
-    grid-template-columns: repeat(11, 16px);
-    grid-template-rows: repeat(9, 16px);
-    gap: 2px;
-    transform-origin: center center;
+.card .front {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.piece {
-    display: grid;
-    grid-template-columns: repeat(2, 16px);
-    grid-template-rows: repeat(3, 16px);
-    gap: 2px;
-    position: absolute;
-    left: calc(50% + 46px);
-    animation: completeHeart 5s linear forwards;
+.card .back {
+  background-image: url("data:image/svg+xml,<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'><defs><pattern id='a' patternUnits='userSpaceOnUse' width='25' height='25' patternTransform='scale(2) rotate(0)'><rect x='0' y='0' width='100%' height='100%' fill='hsla(0,0%,100%,1)'/><path d='M25 30a5 5 0 110-10 5 5 0 010 10zm0-25a5 5 0 110-10 5 5 0 010 10zM0 30a5 5 0 110-10 5 5 0 010 10zM0 5A5 5 0 110-5 5 5 0 010 5zm12.5 12.5a5 5 0 110-10 5 5 0 010 10z'  stroke-width='1' stroke='none' fill='hsla(174, 100%, 29%, 1)'/><path d='M0 15a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm25 0a2.5 2.5 0 110-5 2.5 2.5 0 010 5zM12.5 2.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5zm0 25a2.5 2.5 0 110-5 2.5 2.5 0 010 5z'  stroke-width='1' stroke='none' fill='hsla(187, 100%, 42%, 1)'/></pattern></defs><rect width='800%' height='800%' transform='translate(0,0)' fill='url(%23a)'/></svg>");
+  background-position: center center;
+  background-size: cover;
+  backface-visibility: hidden;
 }
 
-.tilted-piece {
-    grid-template-columns: repeat(3, 16px);
-    display: grid;
-    grid-template-rows: repeat(2, 16px);
-    gap: 2px;
-    position: absolute;
-    left: calc(50% + 46px);
-    animation: incompleteHeart 4s linear infinite;
-    cursor: pointer;
-    /* Remove blue highlighting effect */
-    -webkit-tap-highlight-color: transparent;
-}
-.tetris-block.red {
-    background-color: #FF160C;
-}
-
-.hidden {
-    display: none;
-}
-
-.tetris-block {
-    width: 15px;
-    height: 15px;
-    background-color: #DDD;
-    margin: 1px;
-}
-
-.empty {
-    background-color: transparent;
-    border: none;
-    margin: 1px;
-}
-
-.full {
-    background-color: transparent;
-    border: none;
-    margin: 1px;
+.card .front {
+  transform: rotateY(180deg);
 }
