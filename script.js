@@ -23,7 +23,6 @@ let cards = ["gift", "gift", "heart", "heart", "birthday-cake", "birthday-cake",
 let shuffledCards = shuffle(cards);
 
 const noOfMatches = Math.floor(cards.length / 2);
-console.log(noOfMatches);
 
 function createCards() {
     for (let card of shuffledCards) {
@@ -52,13 +51,17 @@ function initGame() {
             if (event.target.classList.contains("show")) return;
             showCard(event.target);
             setTimeout(addCard, 550, shuffledCards[i], event.target, cardTest, i);
-            console.log(match);
             if (match === noOfMatches) {
+                let icon = document.querySelector('.fa-shopping-basket');
                 const lastCard = document.querySelector('.fa-shopping-basket').parentNode;
-                lastCard.removeChild(document.querySelector('.fa-shopping-basket'));
+                lastCard.removeChild(icon);
                 const p = document.createElement("p");
+                icon = document.createElement("i");
+                icon.classList.add("fa");
+                icon.classList.add("fa-heart");
                 p.innerText = "Happy Anniversary";
                 p.classList.add('text');
+                p.appendChild(icon);
                 lastCard.appendChild(p);
                 lastCard.classList.add('active');
                 centerCard(lastCard);
@@ -66,6 +69,7 @@ function initGame() {
         }, false);
     }
 }
+
 function centerCard(card) {
     const containerRect = ul.getBoundingClientRect();
     const cardRect = card.getBoundingClientRect();
@@ -75,6 +79,7 @@ function centerCard(card) {
 
     card.style.transform = `translate(${offsetX}px, ${offsetY}px)`;
 }
+
 function showCard(card) {
     card.classList.add('show');
 }
@@ -117,7 +122,7 @@ function cardsDontMatch(card1, card2) {
         card1.classList.toggle('show');
         card2.classList.toggle('show');
 
-    }, 300);
+    }, 600);
 }
 
 
