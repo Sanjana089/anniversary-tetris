@@ -102,18 +102,18 @@ function initGame() {
 
                     setTimeout(() => {
                         img.style.display = 'block';
-                    }, (index + 1) * 300);
+                    }, (index + 1) * 400);
                     setTimeout(() => {
-                        lastCard.removeChild(img);
                         if (index == images.length - 1) {
                             lastCard.style.backgroundImage = `url("${imageSrc}")`;
                             lastCard.style.backgroundSize = 'cover';
                             lastCard.style.filter = 'blur(1px)';
                             lastCard.style.backgroundPosition = 'center';
                         }
-                    }, (index + 1) * 300 + 300);
+                        lastCard.removeChild(img);
+                    }, (index + 1) * 400 + 400);
                 });
-                setTimeout(() => showText(), 6200);
+                setTimeout(() => showText(), 5400);
             }
         }, false);
     }
