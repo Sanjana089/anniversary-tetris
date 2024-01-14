@@ -71,7 +71,8 @@ body {
 
 .active {
   transform: translate(0, 0) !important;
-  background: linear-gradient(to bottom, rgb(236, 47, 47) 0%, rgb(137, 12, 12) 100%);
+  background: transparent;
+  box-shadow: none;
   position: absolute;
   z-index: 1;
 }

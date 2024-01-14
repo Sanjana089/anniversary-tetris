@@ -51,7 +51,7 @@ let isRestart = false;
 // ];
 
 const images = [
-    'images/img1.jpeg', 'images/img2.jpg', 'images/img3.jpeg', 'images/img4.jpg', 'images/img5.jpg',
+    'images/img1.jpeg', 'images/img2.jpg', 'images/img3.jpg', 'images/img4.jpg', 'images/img5.jpg',
     'images/img6.jpg', 'images/img7.jpg', 'images/img8.jpg', 'images/img9.jpg', 'images/img10.jpg'
 ];
 const slideshowContainer = document.querySelector('.deck');
@@ -102,12 +102,17 @@ function initGame() {
 
                     setTimeout(() => {
                         img.style.display = 'block';
+
+                        if (index == images.length - 1) {
+                            img.style.height = '100%';
+                            img.style.width = 'auto';
+                        }
                     }, (index + 1) * 400);
                     setTimeout(() => {
                         if (index == images.length - 1) {
                             lastCard.style.backgroundImage = `url("${imageSrc}")`;
                             lastCard.style.backgroundSize = 'cover';
-                            lastCard.style.filter = 'blur(1px)';
+                            lastCard.style.filter = 'blur(2px)';
                             lastCard.style.backgroundPosition = 'center';
                         }
                         lastCard.removeChild(img);
