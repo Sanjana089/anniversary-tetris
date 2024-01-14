@@ -17,7 +17,7 @@ body {
 }
 
 body {
-  font-family: 'Concert One', 'Coda', san-serif, cursive;
+  font-family: 'Brush Script MT', 'Brush Script Std', san-serif, cursive;
   background-image: url('full.jpeg');
   background-size: cover;
   background-position: center;
@@ -31,11 +31,6 @@ body {
   flex-direction: column;
 }
 
-
-.restart {
-  cursor: pointer;
-}
-
 .deck {
   width: 520px;
   min-height: 500px;
@@ -43,12 +38,8 @@ body {
   flex-wrap: wrap;
   margin-bottom: 15px;
   align-items: center;
-  padding: 0px auto;
   padding-inline-start: 0px;
-}
-
-.text {
-  transform: scale(0.7);
+  justify-content: center;
 }
 
 .card {
@@ -79,22 +70,73 @@ body {
 }
 
 .active {
-  transform: translate(-50%, -50%) scale(3.3) !important;
+  transform: translate(0, 0) !important;
   background: linear-gradient(to bottom, rgb(236, 47, 47) 0%, rgb(137, 12, 12) 100%);
-  top: 50%;
-  left: 50%;
   position: absolute;
   z-index: 1;
-  transition: transform 1s;
 }
 
 .match {
-  background: linear-gradient(to bottom, rgb(102 214 155), rgb(1 123 5));
+  background: linear-gradient(to bottom, rgb(244 10 77), rgb(150 0 0));
+}
+
+.text {
+  position: fixed;
+  opacity: 0;
+  color: white;
+  cursor: default;
+  text-align: center;
+  transition: opacity 1s ease;
+}
+
+#wish {
+  font-size: 33px;
+  /* Black w/opacity/see-through */
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: auto;
+  padding: 0 2rem;
+}
+
+#red {
+  color: #b91b1b;
+}
+
+#one {
+  font-size: 40px;
+  margin: 0px;
+  margin-top: 13rem;
+  letter-spacing: 5px;
+  font-family: 'Optima', 'Coda', san-serif, cursive;
+}
+
+#two {
+  font-family: 'Optima', serif;
+  font-weight: 900;
+  font-size: 50px;
+  margin: 0px;
+  text-shadow: 3px 1px 0 #c1c1c1;
+}
+
+#three {
+  font-size: 50px;
+  margin: 0px;
+  font-family: 'Brush Script MT', 'Brush Script Std', san-serif, cursive;
 }
 
 .no-match {
   background: rgb(100, 20, 20);
   transition: 0.5s;
+}
+
+#slideshow {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+#slideshow img {
+  display: none;
 }
 
 @media screen and (max-width: 900px) {
@@ -103,6 +145,7 @@ body {
     background-image: url('portrait.png');
   }
 }
+
 @media screen and (max-width: 600px) {
   .deck {
     width: 255px;
@@ -111,16 +154,12 @@ body {
     justify-content: space-around;
   }
 
-  body {
-    background-image: url('portrait.png');
-  }
-
   .card {
     width: 78px;
     height: 78px;
   }
 
-  .show {
-    font-size: 18px;
+  #slideshow img {
+    width: 100%;
   }
 }

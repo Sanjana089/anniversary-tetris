@@ -16,9 +16,12 @@ let cardTest = [];
 // let cards = ["diamond", "diamond", "plane", "plane", "gift", "gift", "heart", "heart", "home", "home"
 // , "birthday-cake", "birthday-cake", "calendar-o", "calendar-o", "coffee", "coffee", "puzzle-piece", 
 // "puzzle-piece", "glass", "glass", "paw", "paw", "star-o", "star-o", "shopping-basket"];
+
 // 9 cards
 let cards = ["gift", "gift", "heart", "heart", "birthday-cake", "birthday-cake", "glass", "glass", "shopping-basket"];
-// let cards = ["diamond", "diamond",  "shopping-basket"];
+
+// 3 cards
+// let cards = ["diamond", "diamond", "shopping-basket"];
 
 let shuffledCards = shuffle(cards);
 
@@ -42,6 +45,38 @@ const ul = document.querySelector('.deck');
 let match = 0;
 let isRestart = false;
 
+// const images = [
+//     'images/image1.jpeg', 'images/image2.jpeg', 'images/image3.jpeg', 'images/image4.jpeg', 'images/image5.jpeg',
+//     'images/image6.jpeg', 'images/image7.jpeg', 'images/image8.jpeg', 'images/image9.jpeg', 'images/image10.jpeg'
+// ];
+
+const images = [
+    'images/img1.jpeg', 'images/img2.jpg', 'images/img3.jpeg', 'images/img4.jpg', 'images/img5.jpg',
+    'images/img6.jpg', 'images/img7.jpg', 'images/img8.jpg', 'images/img9.jpg', 'images/img10.jpg'
+];
+const slideshowContainer = document.querySelector('.deck');
+
+function expandCard(card) {
+    // Calculate the scale factor based on the screen size
+    const scaleFactor = Math.max(window.innerWidth / card.offsetWidth, window.innerHeight / card.offsetHeight);
+
+    // Apply the scaling transformation
+    card.style.transform = `scale(${scaleFactor})`;
+    card.style.transition = 'all 5s ease';
+
+    // Center the card on the screen
+    const translateX = (window.innerWidth - card.offsetWidth * scaleFactor) / 2;
+    const translateY = (window.innerHeight - card.offsetHeight * scaleFactor) / 2;
+    card.style.transform += ` translate(${translateX}px, ${translateY}px)`;
+
+    // Make the card fullscreen
+    card.style.width = '100vw';
+    card.style.height = '100vh';
+
+    // Remove the onclick event to prevent further scaling
+    card.onclick = null;
+}
+
 function initGame() {
     createCards();
     const card = document.querySelectorAll('.card');
@@ -55,19 +90,39 @@ function initGame() {
                 let icon = document.querySelector('.fa-shopping-basket');
                 const lastCard = document.querySelector('.fa-shopping-basket').parentNode;
                 lastCard.removeChild(icon);
-                const p = document.createElement("p");
-                icon = document.createElement("i");
-                icon.classList.add("fa");
-                icon.classList.add("fa-heart");
-                p.innerText = "Happy Anniversary";
-                p.classList.add('text');
-                p.appendChild(icon);
-                lastCard.appendChild(p);
                 lastCard.classList.add('active');
                 centerCard(lastCard);
+                lastCard.id = 'slideshow';
+
+                expandCard(lastCard);
+                images.forEach((imageSrc, index) => {
+                    const img = document.createElement('img');
+                    img.src = imageSrc;
+                    lastCard.appendChild(img);
+
+                    setTimeout(() => {
+                        img.style.display = 'block';
+                    }, (index + 1) * 300);
+                    setTimeout(() => {
+                        lastCard.removeChild(img);
+                        if (index == images.length - 1) {
+                            lastCard.style.backgroundImage = `url("${imageSrc}")`;
+                            lastCard.style.backgroundSize = 'cover';
+                            lastCard.style.filter = 'blur(1px)';
+                            lastCard.style.backgroundPosition = 'center';
+                        }
+                    }, (index + 1) * 300 + 300);
+                });
+                setTimeout(() => showText(), 6200);
             }
         }, false);
     }
+}
+
+function showText() {
+    const text = document.querySelector('.text');
+    text.style.opacity = '1';
+    text.style.zIndex = '2';
 }
 
 function centerCard(card) {
@@ -112,7 +167,6 @@ function cardsMatch(card1, card2) {
     match++;
 }
 
-
 function cardsDontMatch(card1, card2) {
     card1.classList.toggle('no-match');
     card2.classList.toggle('no-match');
@@ -121,28 +175,7 @@ function cardsDontMatch(card1, card2) {
         card2.classList.toggle('no-match');
         card1.classList.toggle('show');
         card2.classList.toggle('show');
-
     }, 600);
 }
-
-
-let restart = document.querySelector(".restart");
-restart.addEventListener("click", restartGame, false);
-function restartGame() {
-    match = 0;
-    isfirstClick = true;
-    isRestart = true;
-    const deck = document.querySelector('.deck');
-    var elements = deck.getElementsByClassName("card");
-
-    while (elements[0]) {
-        elements[0].parentNode.removeChild(elements[0]);
-    }
-    shuffledCards = shuffle(cards);
-
-    initGame();
-}
-
-
 
 initGame();
